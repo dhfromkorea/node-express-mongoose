@@ -23,20 +23,20 @@
     "method-override": "latest",
     "csurf": "latest",
     "serve-static": "latest",
-
     "mongoose": "latest",
     "swig": "latest",
-
     "passport": "latest",
     "passport-local": "latest",
-
     "winston": "latest",
     "view-helpers": "latest",
     "async": "latest",
     "forever": "latest",
     "connect-mongo": "latest",
     "connect-flash": "latest",
-    "mongoose-user": "latest"
+    "mongoose-user": "latest",
+    "nodemon": "~1.2.1",
+    "plivo": "~0.1.0",
+    "ngrok": "~0.1.97"
   },
   "devDependencies": {
     "nodemon": "latest",
