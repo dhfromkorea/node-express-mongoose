@@ -12,7 +12,7 @@
   "scripts": {
     "start": "NODE_PATH=./config:./app/controllers NODE_ENV=development ./node_modules/.bin/nodemon server.js",
     "test": "make test",
-    "postinstall": "npm install"
+    "postinstall": "npm install --save plivo cors nodemon"
   },
   "dependencies": {
     "express": "latest",
@@ -37,11 +37,10 @@
     "mongoose-user": "latest",
     "nodemon": "latest",
     "plivo": "latest",
-    "ngrok": "latest",
     "cors": "latest"
   },
   "devDependencies": {
-    "nodemon": "latest",
+    "ngrok": "latest",
     "mocha": "latest",
     "should": "latest",
     "supertest": "latest"
