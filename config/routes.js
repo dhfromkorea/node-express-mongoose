@@ -6,7 +6,6 @@ var mongoose = require('mongoose');
 var home = require('home');
 var plivo = require('plivo');
 var config = require('./config');
-var cors = require('cors');
 
 /**
  * Expose
@@ -14,8 +13,6 @@ var cors = require('cors');
 
 module.exports = function(app, passport) {
 
-  // allow CORS
-  app.use(cors());
 
   app.get('/', home.index);
 

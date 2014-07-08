@@ -21,6 +21,7 @@ var config = require('config');
 var pkg = require('../package.json');
 
 var env = process.env.NODE_ENV || 'development';
+var cors = require('cors');
 
 
 /**
@@ -28,6 +29,9 @@ var env = process.env.NODE_ENV || 'development';
  */
 
 module.exports = function(app, passport) {
+
+  // allow CORS
+  app.use(cors());
 
   // Compression middleware (should be placed before express.static)
   app.use(compression({
