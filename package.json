@@ -34,10 +34,10 @@
     "connect-mongo": "latest",
     "connect-flash": "latest",
     "mongoose-user": "latest",
-    "nodemon": "~1.2.1",
-    "plivo": "~0.1.0",
-    "ngrok": "~0.1.97",
-    "cors": "~2.4.1"
+    "nodemon": "latest",
+    "plivo": "latest",
+    "ngrok": "latest",
+    "cors": "latest"
   },
   "devDependencies": {
     "nodemon": "latest",
