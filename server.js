@@ -5,10 +5,9 @@
 
 var fs = require('fs');
 var express = require('express');
-var mongoose = require('mongoose');
 var passport = require('passport');
-var env = process.env.NODE_ENV || 'development';
-var config = require('config')[env];
+var config = require('config');
+var mongoose = require('mongoose');
 
 var app = express();
 var port = process.env.PORT || 3000;
