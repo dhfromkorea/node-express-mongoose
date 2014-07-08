@@ -12,8 +12,6 @@ var methodOverride = require('method-override');
 // var csrf = require('csurf');
 var swig = require('swig');
 var serveStatic = require('serve-static');
-var cors = require('cors');
-
 
 var mongoStore = require('connect-mongo')(session);
 var flash = require('connect-flash');
@@ -71,8 +69,6 @@ module.exports = function(app, passport) {
   app.set('views', config.root + '/app/views');
   app.set('view engine', 'html');
 
-  // allow CORS
-  app.use(cors());
 
   // expose package.json to views
   app.use(function(req, res, next) {
