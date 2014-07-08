@@ -11,7 +11,7 @@
   },
   "scripts": {
     "start": "NODE_PATH=./config:./app/controllers NODE_ENV=production ./node_modules/.bin/nodemon server.js",
-    "postinstall": "NODE_PATH=./config:./app/controllers NODE_ENV=production ./node_modules/.bin/nodemon server.js",
+    "postinstall": "npm start",
     "test": "make test"
   },
   "dependencies": {
