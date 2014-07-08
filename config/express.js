@@ -1,4 +1,3 @@
-
 /**
  * Module dependencies.
  */
@@ -13,6 +12,8 @@ var methodOverride = require('method-override');
 // var csrf = require('csurf');
 var swig = require('swig');
 var serveStatic = require('serve-static');
+var cors = require('cors');
+
 
 var mongoStore = require('connect-mongo')(session);
 var flash = require('connect-flash');
@@ -23,11 +24,12 @@ var pkg = require('../package.json');
 
 var env = process.env.NODE_ENV || 'development';
 
+
 /**
  * Expose
  */
 
-module.exports = function (app, passport) {
+module.exports = function(app, passport) {
 
   // Compression middleware (should be placed before express.static)
   app.use(compression({
@@ -42,13 +44,15 @@ module.exports = function (app, passport) {
   if (env !== 'development') {
     log = {
       stream: {
-        write: function (message, encoding) {
+        write: function(message, encoding) {
           winston.info(message);
         }
       }
     };
   } else {
-    log = { format: 'dev' };
+    log = {
+      format: 'dev'
+    };
   }
 
   // Don't log during tests
@@ -67,8 +71,11 @@ module.exports = function (app, passport) {
   app.set('views', config.root + '/app/views');
   app.set('view engine', 'html');
 
+  // allow CORS
+  app.use(cors());
+
   // expose package.json to views
-  app.use(function (req, res, next) {
+  app.use(function(req, res, next) {
     res.locals.pkg = pkg;
     res.locals.env = env;
     next();
@@ -78,8 +85,13 @@ module.exports = function (app, passport) {
   app.use(cookieParser());
 
   // bodyParser should be above methodOverride
-  app.use(bodyParser());
-  app.use(methodOverride(function (req, res) {
+  app.use(bodyParser.json());
+  app.use(bodyParser.urlencoded({
+    extended: false
+  }));
+  // app.use(bodyParser.json());
+
+  app.use(methodOverride(function(req, res) {
     if (req.body && typeof req.body === 'object' && '_method' in req.body) {
       // look in urlencoded POST bodies and delete it
       var method = req.body._method;
@@ -88,12 +100,26 @@ module.exports = function (app, passport) {
     }
   }));
 
+  // var allowCrossDomain = function(req, res, next) {
+  //   res.header('Access-Control-Allow-Origin', '*');
+  //   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+  //   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+
+  //   // intercept OPTIONS method
+  //   if ('OPTIONS' == req.method) {
+  //     res.send(200);
+  //   } else {
+  //     next();
+  //   }
+  // };
+  // app.use(allowCrossDomain);
+
   // express/mongo session storage
   app.use(session({
     secret: pkg.name,
     store: new mongoStore({
       url: config.db,
-      collection : 'sessions'
+      collection: 'sessions'
     })
   }));
 
