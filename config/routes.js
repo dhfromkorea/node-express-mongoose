@@ -19,7 +19,7 @@ module.exports = function(app, passport) {
   app.post('/call', function(req, res) {
     var srcNum = req.body.src;
     var dstNum = req.body.dst;
-    var base_answerUrl = "http://dialer.ngrok.com/xml-response";
+    var base_answerUrl = "http://simple-dialer.herokuapp.com/xml-response";
 
     var p = plivo.RestAPI(config.plivo);
     var params = {};
