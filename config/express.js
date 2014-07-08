@@ -115,23 +115,23 @@ module.exports = function(app, passport) {
   // app.use(allowCrossDomain);
 
   // express/mongo session storage
-  app.use(session({
-    secret: pkg.name,
-    store: new mongoStore({
-      url: config.db,
-      collection: 'sessions'
-    })
-  }));
+  // app.use(session({
+  //   secret: pkg.name,
+  //   store: new mongoStore({
+  //     url: config.db,
+  //     collection: 'sessions'
+  //   })
+  // }));
 
   // use passport session
-  app.use(passport.initialize());
-  app.use(passport.session());
+  // app.use(passport.initialize());
+  // app.use(passport.session());
 
   // connect flash for flash messages - should be declared after sessions
-  app.use(flash());
+  // app.use(flash());
 
   // should be declared after session and flash
-  app.use(helpers(pkg.name));
+  // app.use(helpers(pkg.name));
 
   // adds CSRF support
   // if (process.env.NODE_ENV !== 'test') {

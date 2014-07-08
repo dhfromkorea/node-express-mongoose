@@ -7,7 +7,7 @@ var fs = require('fs');
 var express = require('express');
 var passport = require('passport');
 var config = require('config');
-var mongoose = require('mongoose');
+// var mongoose = require('mongoose');
 
 var app = express();
 
@@ -29,7 +29,7 @@ fs.readdirSync(__dirname + '/app/models').forEach(function (file) {
 });
 
 // Bootstrap passport config
-require('./config/passport')(passport, config);
+// require('./config/passport')(passport, config);
 
 // Bootstrap application settings
 require('./config/express')(app, passport);
